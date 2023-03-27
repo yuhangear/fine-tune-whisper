@@ -1,0 +1,22 @@
+output_dir=output_dir,  #模型保存目录
+per_device_train_batch_size=60,  #每个GPU设备的训练批次大小
+gradient_accumulation_steps=20,  #梯度积累的步骤数，用于增加batch size而不超过GPU内存限制
+learning_rate=1e-5,  #初始学习率
+warmup_steps=200,  #warmup步骤数量，逐步增加学习率，使训练更稳定
+num_train_epochs=50,  #训练的总epoch数
+dataloader_num_workers=8,  #用于数据加载的进程数量
+gradient_checkpointing=True,  #是否启用梯度检查点，以减少显存占用
+fp16=True,  #是否使用半精度浮点数运算
+evaluation_strategy="steps",  #评估策略，以step为单位进行评估
+per_device_eval_batch_size=8,  #每个GPU设备的评估批次大小
+predict_with_generate=True,  #是否使用生成方式进行预测
+generation_max_length=225,  #生成的最大长度
+save_steps=150,  #保存检查点的步长
+eval_steps=150,  #评估的步长
+logging_steps=150,  #记录日志的步长
+report_to=["tensorboard"],  #将指标报告发送到的位置列表
+load_best_model_at_end=True,  #在训练结束时，是否载入最佳模型
+metric_for_best_model="wer",  #用于选择最佳模型的指标
+greater_is_better=False,  #选择最佳模型时，指标是否越大越好
+
+
